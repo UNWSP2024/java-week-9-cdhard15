@@ -1,0 +1,46 @@
+import java.util.Scanner;
+import java.io.*;
+
+public class Main
+{
+    public static void main(String[] args) throws FileNotFoundException
+    {
+        String filename = "C:\\Users\\Caleb (School)\\Documents\\numbersfile.txt";
+        File textFile = new File(filename);
+        Scanner dataInput = new Scanner(textFile);
+
+        float f;
+        float total = 0;
+        int quantity = 0;
+        String line;
+        float largest = 1;
+        float smallest = (int) largest*999^99;
+
+        while (dataInput.hasNext())
+        {
+            line = dataInput.next();
+            quantity++;
+            f = Float.parseFloat(line);
+            if (f > largest)
+            {
+                largest = f;
+            }
+            if (f<smallest)
+            {
+                smallest = f;
+            }
+            total = total + f;
+        }
+        System.out.println("There are " + quantity + " numbers in this file.");
+        System.out.println("The average is " + total/quantity);
+        System.out.println("The smallest number is " + smallest);
+        System.out.println("The largest number is " + largest);
+    }
+}
+
+Output
+
+There are 7 numbers in this file.
+The average is 223.10143
+The smallest number is 0.01
+The largest number is 873.4
