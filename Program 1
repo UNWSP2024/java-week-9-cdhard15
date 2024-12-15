@@ -1,0 +1,66 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Main
+{
+    public static void main(String[] args) throws FileNotFoundException
+    {
+        //add file
+        String filename =  "C:\\Users\\Caleb (School)\\Documents\\TozerQuote.txt";
+
+        File textFile = new File(filename);
+        Scanner tf = new Scanner(textFile);
+
+        int letters = 0;
+        int words = 0;
+        int sentences = 0;
+        char[] punc = {'!', '?', '.'};
+        int [] sp = new int[words];
+
+
+
+        while(tf.hasNextLine())
+        {
+            words++;
+            String line = tf.nextLine();
+            letters = line.length();
+            int index = line.indexOf(" ");
+            for (int i = 0; i < letters; i++)
+            {
+                if (line.charAt(i) == ' ' && line.charAt(i-1) != ' ')
+                {
+                    words++;
+                }
+                for (int j = 0; j < punc.length; j++)
+                {
+                    if (j == i)
+                    {
+                        sentences++;
+                    }
+                    if (line.charAt(i) == ' ')
+                    {
+                    }
+                }
+
+            }
+            System.out.println(line);
+            System.out.println("There are " + letters + " letters");
+            System.out.println("There are " + words + " words");
+            System.out.println("There are " + sentences + " sentences");
+            System.out.println("The average letters per word is " + letters/words);
+            System.out.println("The average words per sentence is " + words/sentences);
+        }
+
+        tf.close();
+
+    }
+}
+Output
+
+What comes to our minds when we think about God is the most important thing about us. The history of mankind will probably show that no people has ever risen above its religion, and man's spiritual history will positively demonstrate that no religion has ever been greater than its idea of God. Worship is pure of base as the worshiper entertains high or low thoughts of God. 
+There are 376 letters
+There are 68 words
+There are 3 sentences
+The average letters per word is 5
+The average words per sentence is 22
